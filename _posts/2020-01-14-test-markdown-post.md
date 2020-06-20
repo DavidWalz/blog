@@ -82,6 +82,10 @@ key: value
 - another_key: "another value"
 ```
 
+## Formulas
+
+This should work $\sin^2(\alpha) + \cos^2(\alpha) = 1$.
+And this $$a^2+b^2=c^2$$
 
 ## Tables
 
