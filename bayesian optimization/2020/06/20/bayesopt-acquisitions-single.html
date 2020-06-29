@@ -3,34 +3,34 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Acquisition functions in Bayesian optimization | Mind-Dump</title>
+<title>Single-objective acquisition functions in Bayesian optimization | Mind-Dump</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Acquisition functions in Bayesian optimization" />
+<meta property="og:title" content="Single-objective acquisition functions in Bayesian optimization" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
 <meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html" />
-<meta property="og:url" content="https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html" />
+<link rel="canonical" href="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html" />
+<meta property="og:url" content="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html" />
 <meta property="og:site_name" content="Mind-Dump" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-20T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Acquisition functions in Bayesian optimization","dateModified":"2020-06-20T00:00:00-05:00","datePublished":"2020-06-20T00:00:00-05:00","url":"https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html"},"@context":"https://schema.org"}</script>
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html","headline":"Single-objective acquisition functions in Bayesian optimization","dateModified":"2020-06-20T00:00:00-05:00","datePublished":"2020-06-20T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Mind-Dump" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Acquisition functions in Bayesian optimization | Mind-Dump</title>
+<title>Single-objective acquisition functions in Bayesian optimization | Mind-Dump</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Acquisition functions in Bayesian optimization" />
+<meta property="og:title" content="Single-objective acquisition functions in Bayesian optimization" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
 <meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html" />
-<meta property="og:url" content="https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html" />
+<link rel="canonical" href="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html" />
+<meta property="og:url" content="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html" />
 <meta property="og:site_name" content="Mind-Dump" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-20T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Acquisition functions in Bayesian optimization","dateModified":"2020-06-20T00:00:00-05:00","datePublished":"2020-06-20T00:00:00-05:00","url":"https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/jupyter/2020/06/20/bayesopt-acquisitions.html"},"@context":"https://schema.org"}</script>
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html","headline":"Single-objective acquisition functions in Bayesian optimization","dateModified":"2020-06-20T00:00:00-05:00","datePublished":"2020-06-20T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -101,20 +101,20 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Acquisition functions in Bayesian optimization</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-20T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Single-objective acquisition functions in Bayesian optimization</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-20T00:00:00-05:00" itemprop="datePublished">
         Jun 20, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      6 min read
     
 </span></p>
 
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/blog/categories/#jupyter">jupyter</a>
+        <a class="category-tags-link" href="/blog/categories/#Bayesian optimization">Bayesian optimization</a>
         
       
       </p>
@@ -125,19 +125,19 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
           <div class="px-2">
 
-    <a href="https://github.com/DavidWalz/blog/tree/master/_notebooks/2020-06-20-bayesopt-acquisitions.ipynb" role="button" target="_blank">
+    <a href="https://github.com/DavidWalz/blog/tree/master/_notebooks/2020-06-20-bayesopt-acquisitions-single.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/DavidWalz/blog/master?filepath=_notebooks%2F2020-06-20-bayesopt-acquisitions.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/DavidWalz/blog/master?filepath=_notebooks%2F2020-06-20-bayesopt-acquisitions-single.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/DavidWalz/blog/blob/master/_notebooks/2020-06-20-bayesopt-acquisitions.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/DavidWalz/blog/blob/master/_notebooks/2020-06-20-bayesopt-acquisitions-single.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
@@ -146,7 +146,6 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h3"><a href="#Multiple-objectives">Multiple objectives </a></li>
 <li class="toc-entry toc-h3"><a href="#Example">Example </a></li>
 <li class="toc-entry toc-h2"><a href="#Confidence-bound">Confidence bound </a></li>
 <li class="toc-entry toc-h2"><a href="#Probability-of-improvement">Probability of improvement </a></li>
@@ -162,13 +161,12 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Mutual-information">Mutual information </a></li>
 <li class="toc-entry toc-h2"><a href="#GLASSES">GLASSES </a></li>
 <li class="toc-entry toc-h2"><a href="#Estimation-strategy">Estimation strategy </a></li>
-<li class="toc-entry toc-h2"><a href="#Expected-hypervolume-improvement">Expected hypervolume improvement </a></li>
 <li class="toc-entry toc-h2"><a href="#References">References </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2020-06-20-bayesopt-acquisitions.ipynb
+# file to edit: _notebooks/2020-06-20-bayesopt-acquisitions-single.ipynb
 -->
 
 <div class="container" id="notebook-container">
@@ -183,47 +181,10 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Multiple-objectives">
-<a class="anchor" href="#Multiple-objectives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multiple objectives<a class="anchor-link" href="#Multiple-objectives"> </a>
-</h3>
-<p>In the case of multiple objectives there are two approaches:</p>
-<ol>
-<li>multi-objective scalarization with either a-priori chosen or random weights, together with a single-objective acquisition </li>
-<li>multi-objective acquistions that aim for improving the knowledge of the Pareto front.</li>
-</ol>
-<p>Regarding 1. the same scalarizations as in multi-objective optimization may be applied. An overview of scalarization methods in the context of Bayesian optimization is given in <a href="https://arxiv.org/abs/1904.05760">Chugh 2019 - Scalarizing Functions in Bayesian Multiobjective Optimization</a>.</p>
-<p>Regarding 2. there is a growing list of multi-objective acquistions:</p>
-<ul>
-<li>
-<a href="#Expected-hypervolume-improvement">Expected hypervolume improvement</a> </li>
-<li>Expected maximin [EMmi]: <a href="https://www.sciencedirect.com/science/article/pii/S0167947315001991">Svenson+ 2016 - Multiobjective optimization of expensive-to-evaluate deterministic computer simulator models</a>
-</li>
-<li>Probability of improvement, Expected Euclidean improvement <a href="https://arc.aiaa.org/doi/abs/10.2514/1.16875?journalCode=aiaaj">Keane 2012 - Statistical Improvement Criteria for Use in Multiobjective Design Optimization</a>
-</li>
-<li>Predictive entropy search <a href="https://www.sciencedirect.com/science/article/pii/S0925231219308525">Garrido-Merchan+ 2019 - Predictive Entropy Search for Multi-objective Bayesian Optimization with Constraints</a>
-</li>
-<li>Uncertainty reduction <a href="https://link.springer.com/article/10.1007/s11222-014-9477-x">Picheny 2015 - Multiobjective optimization using Gaussian process emulators via stepwise uncertainty reduction</a>
-</li>
-<li>Thompson sampling [TS]: <a href="https://doi.org/10.1007/s10898-018-0609-2">Bradford 2018 - Efficient multiobjective optimization employing Gaussian
-processes, spectral sampling and a genetic algorithm</a>
-</li>
-<li>Chimera</li>
-<li>Expected R2 improvement [ER2I]: <a href="https://link.springer.com/chapter/10.1007/978-3-030-12598-1_29">Deutz 2019 - Expected R2 Indicator Improvement as an Infill Criterion in Bi-objective Bayesian Optimization</a>
-</li>
-<li>Uncertainty sampling, Probability of Joint Exceedance, Hyperplane probability of improvement, Probability non-dominated: <a href="https://arxiv.org/abs/1911.03224">Zachary+ (2019) Assessing the Frontier: Active Learning, Model Accuracy, and Multi-objective Materials Discovery and Optimization</a>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example">
 <a class="anchor" href="#Example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example<a class="anchor-link" href="#Example"> </a>
 </h3>
-<p>In the following we consider the 1-dimensional Forrester function as the unknown black-box function which we wish to minimize.
+<p>For illustrating the different acquisition functions, let's consider an 1-dimensional Forrester function as the unknown black-box function which we wish to minimize.
 We already sampled 4 points and use a GP with a Matern 5/2 kernel as surrogate model.</p>
 
 </div>
@@ -716,25 +677,6 @@ $\alpha(x) = (y^* + |\mathcal{N}(0, \sigma)| - \mu_f(x)) / \sigma_f(x)$</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Expected-hypervolume-improvement">
-<a class="anchor" href="#Expected-hypervolume-improvement" aria-hidden="true"><span class="octicon octicon-link"></span></a>Expected hypervolume improvement<a class="anchor-link" href="#Expected-hypervolume-improvement"> </a>
-</h2>
-<p>Expected hypervolume improvement (EHVI), also known as S-metric-based expected improvement, is an extension of the expected improvement to multiple objectives. 
-It's the expectation value of the improvement in hypervolume for a given candidate $x$ with respect to the existing data $\mathcal{D}$.</p>
-<p>The first method to calculate EVHI was Monte Carlo integration [Emmerich 2005], however the accuracy of this method strongly depends on the number of MC samples.
-For the 2D case an exact methods was proposed in [Emmerich 2012] with complexity $O(n^3 \log n)$, where $n$ is the number of non-dominated points in the data set.
-An exact method for &gt;2D was proposed in [Cockuyt 2014] without an analysis of the complexity.
-[Hupkens 2015] introduced a method with complexity of $O(n^2)$ for 2D and $O(n^3)$ for 3D.
-Asymptotically optimal algorithms with $O(n \log n)$ complexity were proposed in [Emmerich 2016] for the 2D case, and in [Yang 2017] for the 3D case.
-In [Yang 2019] this was extended to &gt;4D and to the probability of improvement on the Pareto front.
-Codes are found <a href="http://liacs.leidenuniv.nl/~csmoda/">here</a>.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">
 <a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
 </h2>
@@ -784,48 +726,6 @@ Codes are found <a href="http://liacs.leidenuniv.nl/~csmoda/">here</a>.</p>
 <li>Scott+ (2011) The Correlated Knowledge Gradient for Simulation Optimization of Continuous Parameters using Gaussian Process Regression<br>
 <a href="https://epubs.siam.org/doi/10.1137/100801275">https://epubs.siam.org/doi/10.1137/100801275</a>
 </li>
-<li>Emmerich (2005) Single- and Multi-objective Evolutionary Design Optimization Assisted by Gaussian Random Field Metamodels<br>
-<a href="https://d-nb.info/998357294/34">https://d-nb.info/998357294/34</a>
-</li>
-<li>Svenson+ (2016) Multiobjective optimization of expensive-to-evaluate deterministic computer simulator models<br>
-<a href="https://www.sciencedirect.com/science/article/pii/S0167947315001991">https://www.sciencedirect.com/science/article/pii/S0167947315001991</a>
-</li>
-<li>Keane (2012) Statistical Improvement Criteria for Use in Multiobjective Design Optimization<br>
-<a href="https://arc.aiaa.org/doi/abs/10.2514/1.16875?journalCode=aiaaj">https://arc.aiaa.org/doi/abs/10.2514/1.16875?journalCode=aiaaj</a>
-</li>
-<li>Garrido-Merchan+ (2019) Predictive Entropy Search for Multi-objective Bayesian Optimization with Constraints<br>
-<a href="https://www.sciencedirect.com/science/article/pii/S0925231219308525">https://www.sciencedirect.com/science/article/pii/S0925231219308525</a>
-</li>
-<li>Picheny (2015) Multiobjective optimization using Gaussian process emulators via stepwise uncertainty reduction<br>
-<a href="https://link.springer.com/article/10.1007/s11222-014-9477-x">https://link.springer.com/article/10.1007/s11222-014-9477-x</a>
-</li>
-<li>Bradford (2018) Efficient multiobjective optimization employing Gaussian processes, spectral sampling and a genetic algorithm<br>
-<a href="https://doi.org/10.1007/s10898-018-0609-2">https://doi.org/10.1007/s10898-018-0609-2</a>
-</li>
-<li>Deutz (2019) Expected R2 Indicator Improvement as an Infill Criterion in Bi-objective Bayesian Optimization<br>
-<a href="https://link.springer.com/chapter/10.1007/978-3-030-12598-1_29">https://link.springer.com/chapter/10.1007/978-3-030-12598-1_29</a>
-</li>
-<li>Zachary+ (2019) Assessing the Frontier: Active Learning, Model Accuracy, and Multi-objective Materials Discovery and Optimization<br>
-<a href="https://arxiv.org/abs/1911.03224">https://arxiv.org/abs/1911.03224</a>
-</li>
-<li>Emmerich+ (2012) Hypervolume-based expected improvement: monotonicity properties and exact computation<br>
-<a href="https://ieeexplore.ieee.org/abstract/document/5949880">https://ieeexplore.ieee.org/abstract/document/5949880</a>
-</li>
-<li>Couckuyt+ (2014) Fast calculation of multiobjective probability of improvement and expected improvement criteria for Pareto optimization<br>
-<a href="https://link.springer.com/article/10.1007/s10898-013-0118-2">https://link.springer.com/article/10.1007/s10898-013-0118-2</a>
-</li>
-<li>Hupkens+ (2015) Faster exact algorithms for computing expected hypervolume improvement<br>
-<a href="https://link.springer.com/chapter/10.1007/978-3-319-15892-1_5">https://link.springer.com/chapter/10.1007/978-3-319-15892-1_5</a>
-</li>
-<li>Emmerich+ (2016) A multicriteria generalization of Bayesian global optimization<br>
-<a href="https://link.springer.com/chapter/10.1007/978-3-319-29975-4_12">https://link.springer.com/chapter/10.1007/978-3-319-29975-4_12</a>
-</li>
-<li>Yang+ (2017) Computing 3-D expected hypervolume improvement and related integrals in asymptotically optimal time<br>
-<a href="https://link.springer.com/chapter/10.1007/978-3-319-54157-0_46">https://link.springer.com/chapter/10.1007/978-3-319-54157-0_46</a>
-</li>
-<li>Yang+ (2019) Efficient computation of expected hypervolume improvement using box decomposition algorithms<br>
-<a href="https://link.springer.com/article/10.1007/s10898-019-00798-7">https://link.springer.com/article/10.1007/s10898-019-00798-7</a>
-</li>
 </ul>
 
 </div>
@@ -843,7 +743,7 @@ Codes are found <a href="http://liacs.leidenuniv.nl/~csmoda/">here</a>.</p>
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/jupyter/2020/06/20/bayesopt-acquisitions.html" hidden></a>
+</script><a class="u-url" href="/blog/bayesian%20optimization/2020/06/20/bayesopt-acquisitions-single.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
