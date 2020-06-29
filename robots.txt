@@ -1,1 +1,1 @@
-Sitemap: https://davidwalz.github.io/fastpages/sitemap.xml
+Sitemap: https://davidwalz.github.io/blog/sitemap.xml
