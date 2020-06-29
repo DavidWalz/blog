@@ -15,7 +15,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-12T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Performance metrics in multi-objective optimization","dateModified":"2020-04-12T00:00:00-05:00","datePublished":"2020-04-12T00:00:00-05:00","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html"},"@context":"https://schema.org"}</script>
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html","headline":"Performance metrics in multi-objective optimization","dateModified":"2020-04-12T00:00:00-05:00","datePublished":"2020-04-12T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Mind-Dump" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Performance metrics in multi-objective optimization | Mind-Dump</title>
@@ -30,7 +30,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-12T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@type":"BlogPosting","headline":"Performance metrics in multi-objective optimization","dateModified":"2020-04-12T00:00:00-05:00","datePublished":"2020-04-12T00:00:00-05:00","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html"},"@context":"https://schema.org"}</script>
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/12/multiobjective-metrics.html","headline":"Performance metrics in multi-objective optimization","dateModified":"2020-04-12T00:00:00-05:00","datePublished":"2020-04-12T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -107,7 +107,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      8 min read
     
 </span></p>
 
@@ -172,32 +172,26 @@ window.onload = wrap_img;
 </div>
     
 
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
+<div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">In</span> <span class="n">multi</span><span class="o">-</span><span class="n">objective</span> <span class="n">optimization</span><span class="p">,</span> <span class="n">the</span> <span class="n">goal</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">simultaneously</span> <span class="n">optimize</span> <span class="err">$</span><span class="n">M</span><span class="err">$</span> <span class="n">different</span> <span class="ow">and</span> <span class="n">generally</span> <span class="n">conflicting</span> <span class="n">objectives</span><span class="o">.</span>
-<span class="n">Since</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">single</span> <span class="n">solution</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">optimal</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">objectives</span><span class="p">,</span> <span class="n">we</span> <span class="n">are</span> <span class="n">instead</span> <span class="n">interested</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Pareto</span> <span class="n">front</span><span class="p">,</span> <span class="n">composed</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">objective</span> <span class="n">space</span> <span class="n">that</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">dominated</span> <span class="n">by</span> <span class="nb">any</span> <span class="n">other</span> <span class="n">point</span> <span class="p">(</span><span class="err">$</span><span class="n">a</span><span class="err">$</span> <span class="n">dominates</span> <span class="err">$</span><span class="n">b</span><span class="err">$</span> <span class="k">if</span> <span class="err">$</span><span class="n">a</span><span class="err">$</span> <span class="ow">is</span> <span class="n">equal</span> <span class="ow">or</span> <span class="n">better</span> <span class="n">than</span> <span class="err">$</span><span class="n">b</span><span class="err">$</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">objectives</span><span class="p">,</span> <span class="ow">and</span> <span class="n">strictly</span> <span class="n">better</span> <span class="ow">in</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">objective</span><span class="p">)</span><span class="o">.</span>
-<span class="n">The</span> <span class="n">aim</span> <span class="ow">in</span> <span class="n">multi</span><span class="o">-</span><span class="n">objective</span> <span class="n">optimization</span> <span class="ow">is</span> <span class="n">thus</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">best</span> <span class="n">approximation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">true</span> <span class="n">Pareto</span> <span class="n">front</span> <span class="k">with</span> <span class="n">the</span> <span class="n">least</span> <span class="n">ressources</span><span class="o">.</span>
-
-<span class="n">Properties</span> <span class="n">of</span> <span class="n">the</span> <span class="n">approximate</span> <span class="n">front</span> <span class="n">that</span> <span class="n">we</span> <span class="n">care</span> <span class="k">for</span> <span class="n">are</span><span class="p">:</span>
-<span class="mf">1.</span> <span class="o">**</span><span class="n">Convergence</span><span class="o">**</span><span class="p">:</span> <span class="n">The</span> <span class="n">individual</span> <span class="n">points</span> <span class="n">should</span> <span class="n">be</span> <span class="n">optimal</span><span class="p">,</span> <span class="n">meaning</span> <span class="n">that</span> <span class="n">the</span> <span class="n">distance</span> <span class="n">to</span> <span class="n">the</span> <span class="n">true</span> <span class="n">Pareto</span> <span class="n">front</span> <span class="ow">is</span> <span class="n">minimal</span><span class="o">.</span> 
-<span class="mf">2.</span> <span class="o">**</span><span class="n">Spread</span><span class="o">**</span><span class="p">:</span> <span class="n">The</span> <span class="n">entire</span> <span class="n">front</span> <span class="n">should</span> <span class="n">be</span> <span class="n">found</span><span class="o">.</span> <span class="n">The</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">extreme</span> <span class="n">solutions</span> <span class="n">should</span> <span class="n">be</span> <span class="n">maximized</span><span class="o">.</span>
-<span class="mf">3.</span> <span class="o">**</span><span class="n">Distribution</span><span class="o">**</span><span class="p">:</span> <span class="n">The</span> <span class="n">Pareto</span> <span class="n">front</span> <span class="n">should</span> <span class="n">be</span> <span class="n">uniformly</span> <span class="n">covered</span><span class="o">.</span>
-
-<span class="n">In</span> <span class="n">the</span> <span class="n">following</span> <span class="n">we</span> <span class="n">look</span> <span class="n">at</span> <span class="n">different</span> <span class="n">performance</span> <span class="n">metrics</span> <span class="k">for</span> <span class="n">approximate</span> <span class="n">fronts</span><span class="o">.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In multi-objective optimization, the goal is to simultaneously optimize $M$ different and generally conflicting objectives.
+Since there is no single solution that is optimal in all objectives, we are instead interested in the Pareto front, composed of the set of points in the objective space that are not dominated by any other point ($a$ dominates $b$ if $a$ is equal or better than $b$ in all objectives, and strictly better in at least one objective).
+The aim in multi-objective optimization is thus to find the best approximation of the true Pareto front with the least ressources.</p>
+<p>Properties of the approximate front that we care for are:</p>
+<ol>
+<li>
+<strong>Convergence</strong>: The individual points should be optimal, meaning that the distance to the true Pareto front is minimal. </li>
+<li>
+<strong>Spread</strong>: The entire front should be found. The distance between extreme solutions should be maximized.</li>
+<li>
+<strong>Distribution</strong>: The Pareto front should be uniformly covered.</li>
+</ol>
+<p>In the following we look at different performance metrics for approximate fronts.</p>
 
 </div>
-    
-
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -251,18 +245,6 @@ In practice we can select the vector of the worst objective values from our set 
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ref_point</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 1: volume=</span><span class="si">{</span><span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 2: volume=</span><span class="si">{</span><span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -285,18 +267,6 @@ Set 2: volume=0.659
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ref_point</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 1: volume=</span><span class="si">{</span><span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 2: volume=</span><span class="si">{</span><span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -331,32 +301,6 @@ For the extremal points a reference point is again necessary to define a volume.
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_hypervolume</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">ref_point</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">contributions</span> <span class="o">=</span> <span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">.</span><span class="n">contributions</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-    
-    <span class="c1"># plot dominated volume for each point</span>
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
-        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">ref_point</span> <span class="o">-</span> <span class="n">p</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))</span>
-    
-    <span class="c1"># annotate each point with its exclusive contribution</span>
-    <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">contributions</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-    
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'ko'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'front'</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ref_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ref_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'ro'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'reference'</span><span class="p">)</span>    
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
     
@@ -364,23 +308,6 @@ For the extremal points a reference point is again necessary to define a volume.
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ref_point</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">12.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plot_pareto_front</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">plot_pareto_front</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
-<span class="n">plot_hypervolume</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ref_point</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">plot_hypervolume</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">ref_point</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'$A_1$: volume=</span><span class="si">{</span><span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'$A_2$: volume=</span><span class="si">{</span><span class="n">pygmo</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -460,26 +387,6 @@ The crowding distance is thus similar to the exclusive hypervolume contribution,
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_crowding</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-    <span class="n">N</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">a0</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">a1</span> <span class="o">-</span> <span class="n">a0</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">crowding_distance</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
     
@@ -496,21 +403,6 @@ The crowding distance is thus similar to the exclusive hypervolume contribution,
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">12.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">A</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">),</span> <span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">A2</span><span class="p">)):</span>
-    <span class="n">plot_pareto_front</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-    <span class="n">plot_crowding</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'$A_1$'</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'$A_2$'</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -576,7 +468,7 @@ I_{\epsilon+}(A, B) = \max_\limits{b \in B} \min_\limits{a \in A} \max_\limits{1
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In our example, set 2</p>
+<p>For the multiplicative $\epsilon$-indicator we get</p>
 
 </div>
 </div>
@@ -584,17 +476,6 @@ I_{\epsilon+}(A, B) = \max_\limits{b \in B} \min_\limits{a \in A} \max_\limits{1
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 1: I_ε1=</span><span class="si">{</span><span class="n">epsilon_indicator</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 2: I_ε1=</span><span class="si">{</span><span class="n">epsilon_indicator</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -614,20 +495,17 @@ Set 2: I_ε1=3.000
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the additive $\epsilon$-indicator we get</p>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 1: I_ε1=</span><span class="si">{</span><span class="n">epsilon_indicator</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Set 2: I_ε1=</span><span class="si">{</span><span class="n">epsilon_indicator</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -697,17 +575,6 @@ With the default choice of $p=1$, GD is simply the average distance.</p>
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'GD(A,R1) = </span><span class="si">{</span><span class="n">generational_distance</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'GD(A,R2) = </span><span class="si">{</span><span class="n">generational_distance</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -743,17 +610,6 @@ In the example, set 2 achieves a better IGD-value due to its better spread and d
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'IGD(A1,R) = </span><span class="si">{</span><span class="n">generational_distance</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">A1</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'IGD(A2,R) = </span><span class="si">{</span><span class="n">generational_distance</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">A2</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">

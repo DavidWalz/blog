@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://davidwalz.github.io/blog/markdown/2020/01/14/test-markdown-post.html</loc>
-<lastmod>2020-01-14T00:00:00-06:00</lastmod>
-</url>
-<url>
 <loc>https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html</loc>
 <lastmod>2020-04-05T00:00:00-05:00</lastmod>
 </url>
@@ -27,6 +23,10 @@
 <url>
 <loc>https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html</loc>
 <lastmod>2020-06-28T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html</loc>
+<lastmod>2020-06-29T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://davidwalz.github.io/blog/about/</loc>

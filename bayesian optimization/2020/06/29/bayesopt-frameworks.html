@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Bayesian Optimization Frameworks | Mind-Dump</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Bayesian Optimization Frameworks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html" />
+<meta property="og:url" content="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html" />
+<meta property="og:site_name" content="Mind-Dump" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-29T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html","headline":"Bayesian Optimization Frameworks","dateModified":"2020-06-29T00:00:00-05:00","datePublished":"2020-06-29T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Mind-Dump" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Bayesian Optimization Frameworks | Mind-Dump</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Bayesian Optimization Frameworks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html" />
+<meta property="og:url" content="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html" />
+<meta property="og:site_name" content="Mind-Dump" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-29T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html","headline":"Bayesian Optimization Frameworks","dateModified":"2020-06-29T00:00:00-05:00","datePublished":"2020-06-29T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Mind-Dump" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Mind-Dump</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Bayesian Optimization Frameworks</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-29T00:00:00-05:00" itemprop="datePublished">
+        Jun 29, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#Bayesian optimization">Bayesian optimization</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Feature-comparison">Feature comparison </a></li>
+<li class="toc-entry toc-h2"><a href="#Activity-comparison">Activity comparison </a></li>
+<li class="toc-entry toc-h2"><a href="#GPyOpt">GPyOpt </a></li>
+<li class="toc-entry toc-h2"><a href="#Scikit-Optimize">Scikit-Optimize </a></li>
+<li class="toc-entry toc-h2"><a href="#GPFlowOpt-(with-TF-&-GPFlow)">GPFlowOpt (with TF &amp; GPFlow) </a></li>
+<li class="toc-entry toc-h2"><a href="#BoTorch-(with-PyTorch,-GPyTorch-&-Pyro)">BoTorch (with PyTorch, GPyTorch &amp; Pyro) </a></li>
+<li class="toc-entry toc-h2"><a href="#Ax">Ax </a></li>
+<li class="toc-entry toc-h2"><a href="#Emukit">Emukit </a></li>
+<li class="toc-entry toc-h2"><a href="#Dragonfly">Dragonfly </a></li>
+<li class="toc-entry toc-h2"><a href="#Other-projects">Other projects </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-06-29-bayesopt-frameworks.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bayesian Optimization (BO) is a method for optimizing expensive black-box functions by means of a probabilistic surrogate model and an acquisition function that specifies a trade-off between exploration (improving the surrogate) and exploitation (finding the minimizer of the surrogate and thus of the black-box function).</p>
+<p>As <strong>surrogate model</strong> typically Gaussians processes (GP) or tree-based models (RF, GBT ...) are used. These have their own parameters that need to be estimated via maximum likelihood or integrated out.
+The maximum likelihood (ML) point estimate is typically searched using a gradient-based local optimizer is used together with a heuristic such as multiple restarts to deal with the non-convexiy of the problem.
+For integrating out the model parameters either Markov-chain Monte Carlo (MCMC) or approximate variational inference (VI) methods have to be used, together with an assumption on the prior distribution. As with the ML estimation, the problem is non-convex.</p>
+<p><strong>Search spaces</strong> define the possible inputs. When applying BO for tuning hyperparameters of machine learning models the inputs include continuous, integer / ordinal and categorical variables and may include conditionals. When applying BO to optimization of real-world processes additional (in-)equality constraints may need to be satisfied.</p>
+<p><strong>Acquistion functions</strong> either have a analytic form, or need to be approximated via Monte Carlo methods.
+We want to find the minimizer of the acquistion over the search space in order to evaluate it next.
+This is typically done using a gradient-free or gradient-based local optimizer or via MC-sampling, depending on the nature of the acquistion function.
+The search space including its constraints needs to be handled by the optimizer.
+In multi-objective BO the black-box function has multiple target outputs. Here the acquisition function needs to guide the search towards exploring the Pareto front.</p>
+<p>There are a number of general-purpose (not focussing only on hyperparameter tuning) BO frameworks available in Python and R. In this post the main frameworks are compared in terms of supported features and development &amp; support activity.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Feature-comparison">
+<a class="anchor" href="#Feature-comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature comparison<a class="anchor-link" href="#Feature-comparison"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Surrogates</th>
+<th>Hyperparameter handling</th>
+<th>Acquisitions</th>
+<th>Multi-objective</th>
+<th>Search space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mlr-org.github.io/mlrMBO">mlrMBO</a></td>
+<td>GP, RF (<a href="https://mlr.mlr-org.com/">mlr</a>)</td>
+<td>ML</td>
+<td>EI, CB, AEI, EQI, AdaCB</td>
+<td>DIB</td>
+<td>continuous, integer, categorical + constraints</td>
+</tr>
+<tr>
+<td><a href="http://pygpgo.readthedocs.io">pyGPGO</a></td>
+<td>GP (native), GBT, RF, ET (<a href="https://scikit-learn.org">scikit-learn</a>)</td>
+<td>ML, MCMC (<a href="https://docs.pymc.io/">pymc3</a>)</td>
+<td>EI, PI, CB</td>
+<td></td>
+<td>continuous, integer</td>
+</tr>
+<tr>
+<td><a href="https://scikit-optimize.github.io">Scikit-Optimize</a></td>
+<td>GP, RF, GBT (<a href="https://scikit-learn.org">scikit-learn</a>)</td>
+<td>ML</td>
+<td>EI, PI, CB</td>
+<td>-</td>
+<td>continuous, discrete, categorical + constraints</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SheffieldML/GPyOpt">GPyOpt</a></td>
+<td>GP (<a href="http://sheffieldml.github.io/GPy">GPy</a>)</td>
+<td>ML, MCMC</td>
+<td>EI, PI, CB</td>
+<td>-</td>
+<td>continuous, discrete, categorical + constraints</td>
+</tr>
+<tr>
+<td><a href="https://github.com/GPflow/GPflowOpt">GPflowOpt</a></td>
+<td>GP (<a href="https://github.com/GPflow/GPflow">GPflow</a>)</td>
+<td>ML</td>
+<td>EI, PI, CB, MES, PF</td>
+<td>HVPI</td>
+<td>continuous</td>
+</tr>
+<tr>
+<td><a href="https://botorch.org/">BoTorch</a></td>
+<td>GP (<a href="https://github.com/cornellius-gp/gpytorch">GPyTorch</a>)</td>
+<td>MC, MCMC (Pyro)</td>
+<td>EI, PI, CB, qMES, qKG, extensible</td>
+<td>custom scalarizations</td>
+<td>continous + linear constraints</td>
+</tr>
+<tr>
+<td><a href="https://github.com/amzn/emukit">Emukit</a></td>
+<td>GP (<a href="http://sheffieldml.github.io/GPy">GPy</a>)</td>
+<td>ML</td>
+<td>EI, PI, CB, ES, MES, PF</td>
+<td>-</td>
+<td>continuous, integer, categorical + constraints</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dragonfly/dragonfly">DragonFly</a></td>
+<td>GP (native)</td>
+<td>ML, posterior sampling</td>
+<td>EI, CB, PI, TTEI, TS</td>
+<td>scalarization with CB/TS</td>
+<td>continuous, categorical</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Activity-comparison">
+<a class="anchor" href="#Activity-comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Activity comparison<a class="anchor-link" href="#Activity-comparison"> </a>
+</h2>
+<p>The ranking by open/closed issues and commits gives similar results.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2020-06-29 23:23:57.558553
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stars</th>
+      <th>forks</th>
+      <th>contributors</th>
+      <th>commits</th>
+      <th>open_issues</th>
+      <th>closed_issues</th>
+      <th>created</th>
+      <th>last_commit</th>
+      <th>license</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>scikit-optimize</th>
+      <td>1836</td>
+      <td>349</td>
+      <td>55</td>
+      <td>1500</td>
+      <td>150</td>
+      <td>769</td>
+      <td>2016-03-20</td>
+      <td>2020-05-18</td>
+      <td>BSD-3-Clause</td>
+    </tr>
+    <tr>
+      <th>botorch</th>
+      <td>1630</td>
+      <td>137</td>
+      <td>28</td>
+      <td>656</td>
+      <td>24</td>
+      <td>437</td>
+      <td>2018-07-30</td>
+      <td>2020-06-24</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <th>mlrMBO</th>
+      <td>162</td>
+      <td>40</td>
+      <td>14</td>
+      <td>1600</td>
+      <td>84</td>
+      <td>410</td>
+      <td>2013-10-23</td>
+      <td>2020-06-15</td>
+      <td>NOASSERTION</td>
+    </tr>
+    <tr>
+      <th>Ax</th>
+      <td>1179</td>
+      <td>113</td>
+      <td>46</td>
+      <td>608</td>
+      <td>21</td>
+      <td>318</td>
+      <td>2019-02-09</td>
+      <td>2020-06-29</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <th>emukit</th>
+      <td>218</td>
+      <td>64</td>
+      <td>20</td>
+      <td>282</td>
+      <td>31</td>
+      <td>278</td>
+      <td>2018-09-04</td>
+      <td>2020-06-03</td>
+      <td>Apache-2.0</td>
+    </tr>
+    <tr>
+      <th>GPyOpt</th>
+      <td>621</td>
+      <td>190</td>
+      <td>35</td>
+      <td>504</td>
+      <td>89</td>
+      <td>235</td>
+      <td>2014-08-13</td>
+      <td>2020-03-19</td>
+      <td>BSD-3-Clause</td>
+    </tr>
+    <tr>
+      <th>GPflowOpt</th>
+      <td>213</td>
+      <td>51</td>
+      <td>5</td>
+      <td>426</td>
+      <td>22</td>
+      <td>97</td>
+      <td>2017-04-28</td>
+      <td>2018-09-12</td>
+      <td>Apache-2.0</td>
+    </tr>
+    <tr>
+      <th>dragonfly</th>
+      <td>498</td>
+      <td>57</td>
+      <td>8</td>
+      <td>393</td>
+      <td>17</td>
+      <td>49</td>
+      <td>2018-04-20</td>
+      <td>2020-03-13</td>
+      <td>MIT</td>
+    </tr>
+    <tr>
+      <th>pyGPGO</th>
+      <td>182</td>
+      <td>47</td>
+      <td>2</td>
+      <td>292</td>
+      <td>7</td>
+      <td>18</td>
+      <td>2016-11-23</td>
+      <td>2019-06-15</td>
+      <td>MIT</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="GPyOpt">
+<a class="anchor" href="#GPyOpt" aria-hidden="true"><span class="octicon octicon-link"></span></a>GPyOpt<a class="anchor-link" href="#GPyOpt"> </a>
+</h2>
+<ul>
+<li>GPy <a href="https://github.com/SheffieldML/GPy">[code]</a> <a href="https://gpy.readthedocs.io/en/latest/">[doc]</a>
+</li>
+<li>GPyOpt <a href="https://github.com/SheffieldML/GPyOpt">[code]</a> <a href="https://gpyopt.readthedocs.io/en/latest/">[doc]</a>
+</li>
+</ul>
+<p>GPyOpt is a BO package built on top of the hugely popular GPy for flexible GP modeling. Both are being developed by the university of Sheffield.
+Together with mlrMBO, GPyOpt has been around the longest. However, development of GPyOpt has somewhat stalled.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scikit-Optimize">
+<a class="anchor" href="#Scikit-Optimize" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scikit-Optimize<a class="anchor-link" href="#Scikit-Optimize"> </a>
+</h2>
+<p><a href="https://github.com/scikit-optimize/scikit-optimize">[code]</a>
+<a href="https://scikit-optimize.github.io/">[doc]</a></p>
+<p>Scikit-Optimize is an actively developed and well polished BO package based on the GP and tree-based models in Scikit-Learn. Not supported are model parameter integration and multi-objective optimization. Compared to GPy, the GP modeling in Scikit-Learn is rather rudimentary. Mixed search spaces and constraints are supported, as well as external, delayed and batched evaluations. For Hyperparameter tuning in Scikit-Learn there is a drop-in replacement for Grid/RandomSearchCV.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="GPFlowOpt-(with-TF-&amp;-GPFlow)">
+<a class="anchor" href="#GPFlowOpt-(with-TF-&amp;-GPFlow)" aria-hidden="true"><span class="octicon octicon-link"></span></a>GPFlowOpt (with TF &amp; GPFlow)<a class="anchor-link" href="#GPFlowOpt-(with-TF-&amp;-GPFlow)"> </a>
+</h2>
+<ul>
+<li>GPFlow <a href="https://github.com/GPflow/GPflow">[code]</a> <a href="https://gpflow.readthedocs.io/en/latest/">[doc]</a> <a href="https://arxiv.org/abs/1711.03845">[paper]</a>
+</li>
+<li>GPFlowOpt <a href="https://github.com/GPflow/GPflowOpt">[code]</a> <a href="https://gpflowopt.readthedocs.io/en/latest/">[doc]</a> <a href="http://jmlr.org/papers/v18/16-537.html">[paper]</a>
+</li>
+</ul>
+<p>GPFlowOpt is BO package built on top of GPFlow, which in turn uses TensorFlow for fast linear algebra computations with GPU-support and auto-differentiation. This makes it more extensible as different models and acquisition functions can be implemented without having to define gradients for the optimizer.
+The top-level API is inspired GPy.</p>
+<p><em>Development on GPFlowOpt is stopped since the end of 2018.</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="BoTorch-(with-PyTorch,-GPyTorch-&amp;-Pyro)">
+<a class="anchor" href="#BoTorch-(with-PyTorch,-GPyTorch-&amp;-Pyro)" aria-hidden="true"><span class="octicon octicon-link"></span></a>BoTorch (with PyTorch, GPyTorch &amp; Pyro)<a class="anchor-link" href="#BoTorch-(with-PyTorch,-GPyTorch-&amp;-Pyro)"> </a>
+</h2>
+<ul>
+<li>BoTorch <a href="https://github.com/pytorch/botorch">[code]</a> <a href="https://botorch.org/">[doc]</a> <a href="https://arxiv.org/abs/1910.06403">[paper]</a>
+</li>
+<li>GPyTorch <a href="https://github.com/cornellius-gp/gpytorch">[code]</a> <a href="https://gpytorch.ai/">[doc]</a> <a href="https://arxiv.org/abs/1809.11165">[paper]</a>
+</li>
+<li>Pyro <a href="https://github.com/pyro-ppl/pyro">[code]</a> <a href="http://docs.pyro.ai">[doc]</a> <a href="https://arxiv.org/abs/1810.09538">[paper]</a>
+</li>
+</ul>
+<p>BoTorch is a BO package built on top of GPyTorch (GP modeling), Pyro (MCMC and variational inference) and PyTorch as its compution framework. Hence, it profits from GPU support and auto-differentiation. BoTorch is extremely flexible, e.g. in it's first class support for custom acquisition functions, which is made possible by MC integration (quasi-MC together with the reparametrisation trick) and auto-differentiation for gradient-based optimization. BoTorch supports:</p>
+<ul>
+<li>GP models (multi-fidelity, multi-task, ...), variational neural networks </li>
+<li>MC handling of model parameters is in principle supported via GPyTorch and Pyro, but is not yet implemented</li>
+<li>analytic acquisitions (EI, PI, CB) and MC acquisitions: (knowledge gradient, max-value entropy search, posterior variance), cost awareness and custom acquisitions</li>
+<li>multi-objective optimization via passing a custom pytorch function that scalarizes the objectives to the corresponding MC acqusisition</li>
+<li>only continous search spaces; categorical / ordinal variables need to be encoded beforehand</li>
+<li>parameter constraints (linear inequality constraints) and outcome constraints</li>
+<li>batched proposals</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Ax">
+<a class="anchor" href="#Ax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ax<a class="anchor-link" href="#Ax"> </a>
+</h2>
+<p><a href="https://github.com/facebook/Ax">[code]</a>
+<a href="https://ax.dev">[doc]</a>
+<a href="ax.ipynb">[test]</a></p>
+<p>Ax is a high-level framework for Bayesian and Bandit optimization. 
+For BO, Ax relies mostly on BoTorch from the same developers, hence the entire feature set of BoTorch is available in principle, but needs to implemented first.
+For Bandits optimization, Thompson sampling is used.
+Ax provides:</p>
+<ul>
+<li>a service-like API for managing and storing experiments as JSON files (local) or in SQL databases. The service is only running locally.</li>
+<li>transform pipelines to handle encoding of categorical and ordinal variables, scaling and log-transforms</li>
+<li>limited support for parameter constraints of type $x1 \leq x2$ and $\sum x_i \leq c$ as well as output constraints</li>
+<li>limited support for multi-objective optimization: only weighted sum scalarization and no tooling around it</li>
+<li>examples for human-in-the-loop optimization</li>
+</ul>
+<p>Overall, I think Ax needs more maturing.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Emukit">
+<a class="anchor" href="#Emukit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Emukit<a class="anchor-link" href="#Emukit"> </a>
+</h2>
+<p><a href="https://github.com/amzn/emukit">[code]</a>
+<a href="https://amzn.github.io/emukit/">[doc]</a>
+<a href="">[paper]</a></p>
+<p>Emukit is a high-level framework for Bayesian optimization and and Bayesian quadrature. It is intended to be independent of the modeling framework, but supports first class support for GPy. Similar built-in support for other frameworks is apparently not planned. Mixed search spaces and constraints are supported, multi-objective optimization is currently not.</p>
+<p>Emukit provides abstraction layers for the individual components of Bayesian optimization in order to implement algorithms independent of the concrete modeling framework. While the idea is intriguing, concepts like auto-differentiation that make GPFlowOpt and GPyTorchOpt powerfull fall short here. Instead, by focussing on GPy, Emukit seems to end up as replacement for GPyOpt.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dragonfly">
+<a class="anchor" href="#Dragonfly" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dragonfly<a class="anchor-link" href="#Dragonfly"> </a>
+</h2>
+<p><a href="https://github.com/dragonfly/dragonfly">[code]</a>
+<a href="https://dragonfly-opt.readthedocs.io">[doc]</a>
+<a href="https://arxiv.org/abs/1903.06694">[paper]</a></p>
+<p>Dragonfly is package developed at Carneggie Melon University. It has native implementations of GPs with the typical kernels, an optimizer (DOO), MCMC samplers copied from copied from pymc3 and pgmpy (Metropolis, Slice, NUTS, HMC). Multi-objective optimization is supported via random scalarizations, constraints are not.
+Note that Thompson sampling from GPs seems to be incorrectly implemented, as points are sampled without keeping track of the previously sampled points.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Other-projects">
+<a class="anchor" href="#Other-projects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other projects<a class="anchor-link" href="#Other-projects"> </a>
+</h2>
+<ul>
+<li>
+<a href="https://github.com/fmfn/BayesianOptimization">fmfn/BayesianOptimization</a> - Small BO package using GPs from Scikit-Learn </li>
+<li>
+<a href="https://github.com/wujian16/Cornell-MOE">Cornell-MOE</a> - Relatively old Python / C++ package for BO</li>
+<li>
+<a href="https://github.com/bytesandbrains/ProcessOptimizer">ProcessOptimizer</a> - Fork of Scikit-Optimizer for optimizing real world processes. Provides classes for composable constraints. However, only rejection sampling is implemented.</li>
+<li>
+<a href="https://github.com/aspuru-guzik-group/phoenics">Phoenics</a> - BO package using kernel density estimates and a specific multi-objective acquistion called CHIMERA</li>
+<li>
+<a href="https://github.com/Eric-Bradford/TS-EMO">TS-EMO</a> - Matlab implementation of the TS-EMO algorithm</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/blog/bayesian%20optimization/2020/06/29/bayesopt-frameworks.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
