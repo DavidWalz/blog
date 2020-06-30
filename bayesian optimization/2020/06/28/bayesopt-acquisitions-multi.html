@@ -3,38 +3,38 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Multi-objective acquisition functions in Bayesian optimization | Mind-Dump</title>
+<title>Multi-objective acquisition functions | Not a Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Multi-objective acquisition functions in Bayesian optimization" />
+<meta property="og:title" content="Multi-objective acquisition functions" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta name="description" content="A comparison of multi-objective acquisition functions in Bayesian optimization" />
+<meta property="og:description" content="A comparison of multi-objective acquisition functions in Bayesian optimization" />
 <link rel="canonical" href="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html" />
 <meta property="og:url" content="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html" />
-<meta property="og:site_name" content="Mind-Dump" />
+<meta property="og:site_name" content="Not a Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-28T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html","headline":"Multi-objective acquisition functions in Bayesian optimization","dateModified":"2020-06-28T00:00:00-05:00","datePublished":"2020-06-28T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"A comparison of multi-objective acquisition functions in Bayesian optimization","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html","headline":"Multi-objective acquisition functions","dateModified":"2020-06-28T00:00:00-05:00","datePublished":"2020-06-28T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Mind-Dump" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Multi-objective acquisition functions in Bayesian optimization | Mind-Dump</title>
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Not a Blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Multi-objective acquisition functions | Not a Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Multi-objective acquisition functions in Bayesian optimization" />
+<meta property="og:title" content="Multi-objective acquisition functions" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta name="description" content="A comparison of multi-objective acquisition functions in Bayesian optimization" />
+<meta property="og:description" content="A comparison of multi-objective acquisition functions in Bayesian optimization" />
 <link rel="canonical" href="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html" />
 <meta property="og:url" content="https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html" />
-<meta property="og:site_name" content="Mind-Dump" />
+<meta property="og:site_name" content="Not a Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-28T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"An easy to use blogging platform with support for Jupyter Notebooks.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html","headline":"Multi-objective acquisition functions in Bayesian optimization","dateModified":"2020-06-28T00:00:00-05:00","datePublished":"2020-06-28T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"A comparison of multi-objective acquisition functions in Bayesian optimization","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/bayesian%20optimization/2020/06/28/bayesopt-acquisitions-multi.html","headline":"Multi-objective acquisition functions","dateModified":"2020-06-28T00:00:00-05:00","datePublished":"2020-06-28T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Mind-Dump" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Not a Blog" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
@@ -83,7 +83,7 @@ window.onload = wrap_img;
 </script>
 </head><body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Mind-Dump</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Not a Blog</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -101,7 +101,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Multi-objective acquisition functions in Bayesian optimization</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-28T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Multi-objective acquisition functions</h1><p class="page-description">A comparison of multi-objective acquisition functions in Bayesian optimization</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-28T00:00:00-05:00" itemprop="datePublished">
         Jun 28, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -143,6 +143,21 @@ window.onload = wrap_img;
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bayesian optimization is a sample-efficient method for solving $\min_{x \in \mathcal{X}} f(x)$ where $f$ is a black-box function whose evaluations are expensive and possibly noisy.</p>
+<p>When $f$ is vector-valued, i.e. there are multiple outputs that we care to minimize, there is in general no single optimal point.
+Instead we have a set of optimal compromises (the Pareto front), where for each point we cannot improve any one output without worsening at least one other output.</p>
+<p>There are two approaches for dealing with multiple objectives in the context of Bayesian optimization: 
+1) Use a multi-objective scalarization together with a single-objective acquisition 
+2) Use a multi-objective acquistion that aims for improving the knowledge of the Pareto front.</p>
+<p>Regarding 1. the same scalarizations as in multi-objective optimization may be applied. An overview of scalarization methods in the context of Bayesian optimization is given in [Chugh 2019]</p>
+<p>Regarding 2. there is a growing list of multi-objective acquistions</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -250,7 +265,7 @@ Codes are found <a href="http://liacs.leidenuniv.nl/~csmoda/">here</a>.</p>
         </p>
       </div>
       <div class="footer-col">
-        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+        <p>Mapping the space of Bayesian and multi-objective optimization.</p>
       </div>
     </div>
 
