@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Spectral Sampling for Gaussian Processes | Curious Goat</title>
+<title>Spectral sampling from Gaussian processes | Curious Goat</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Spectral Sampling for Gaussian Processes" />
+<meta property="og:title" content="Spectral sampling from Gaussian processes" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A method for approximate function samples from GP posteriors" />
-<meta property="og:description" content="A method for approximate function samples from GP posteriors" />
+<meta name="description" content="Implementing a method for approximate function samples from GP posteriors." />
+<meta property="og:description" content="Implementing a method for approximate function samples from GP posteriors." />
 <link rel="canonical" href="https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html" />
 <meta property="og:url" content="https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html" />
 <meta property="og:site_name" content="Curious Goat" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-03T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"A method for approximate function samples from GP posteriors","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html","headline":"Spectral Sampling for Gaussian Processes","dateModified":"2020-05-03T00:00:00-05:00","datePublished":"2020-05-03T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"Implementing a method for approximate function samples from GP posteriors.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html","headline":"Spectral sampling from Gaussian processes","dateModified":"2020-05-03T00:00:00-05:00","datePublished":"2020-05-03T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Curious Goat" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -24,19 +24,19 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-171268636-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Spectral Sampling for Gaussian Processes | Curious Goat</title>
+<title>Spectral sampling from Gaussian processes | Curious Goat</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Spectral Sampling for Gaussian Processes" />
+<meta property="og:title" content="Spectral sampling from Gaussian processes" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A method for approximate function samples from GP posteriors" />
-<meta property="og:description" content="A method for approximate function samples from GP posteriors" />
+<meta name="description" content="Implementing a method for approximate function samples from GP posteriors." />
+<meta property="og:description" content="Implementing a method for approximate function samples from GP posteriors." />
 <link rel="canonical" href="https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html" />
 <meta property="og:url" content="https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html" />
 <meta property="og:site_name" content="Curious Goat" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-03T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"A method for approximate function samples from GP posteriors","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html","headline":"Spectral Sampling for Gaussian Processes","dateModified":"2020-05-03T00:00:00-05:00","datePublished":"2020-05-03T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"description":"Implementing a method for approximate function samples from GP posteriors.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html","headline":"Spectral sampling from Gaussian processes","dateModified":"2020-05-03T00:00:00-05:00","datePublished":"2020-05-03T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -113,7 +113,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Spectral Sampling for Gaussian Processes</h1><p class="page-description">A method for approximate function samples from GP posteriors</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-05-03T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Spectral sampling from Gaussian processes</h1><p class="page-description">Implementing a method for approximate function samples from GP posteriors.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-05-03T00:00:00-05:00" itemprop="datePublished">
         May 3, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -126,10 +126,10 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/blog/categories/#Gaussian process">Gaussian process</a>
+        <a class="category-tags-link" href="/blog/categories/#gaussian process">gaussian process</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/blog/categories/#Bayesian optimization">Bayesian optimization</a>
+        <a class="category-tags-link" href="/blog/categories/#bayesian optimization">bayesian optimization</a>
         
       
       </p>
@@ -138,24 +138,9 @@ window.onload = wrap_img;
     
       
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
-          <div class="px-2">
-
-    <a href="https://github.com/DavidWalz/blog/tree/master/_notebooks/2020-05-03-gp-spectral-sampling.ipynb" role="button" target="_blank">
-<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
-    </a>
-</div>
-
-          <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/DavidWalz/blog/master?filepath=_notebooks%2F2020-05-03-gp-spectral-sampling.ipynb" target="_blank">
-        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
-    </a>
-</div>
-
-          <div class="px-2">
-    <a href="https://colab.research.google.com/github/DavidWalz/blog/blob/master/_notebooks/2020-05-03-gp-spectral-sampling.ipynb" target="_blank">
-        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
-    </a>
-</div>
+          
+          
+          
         </div>
       </header>
 
@@ -186,7 +171,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The Bayesian multi-objective optimization algorithm TSEMO [Bradford 2018] uses Thompson sampling of the surrogate Gaussian process model. In order to sample a <em>function</em> from a Gaussian process posterior, an approximate method using spectral sampling is employed. In the following we implement this method in Python.</p>
-<p>There is also a nice python package <a href="https://pypi.org/project/pyrff/">pyrff</a> implementing spectral sampling.</p>
+<p>There is also a nice python package, called <a href="https://davidwalz.github.io/blog/python%20package/gaussian%20process/bayesian%20optimization/2020/06/30/python-pyrff.html">pyrff</a> that implements spectral sampling, but I found out only later.</p>
 
 </div>
 </div>
