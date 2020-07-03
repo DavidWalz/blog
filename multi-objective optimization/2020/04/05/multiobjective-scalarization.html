@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-05T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"A comparison of different scalarization methods in multi-objective optimization.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html","headline":"Scalarization methods in multi-objective optimization","dateModified":"2020-04-05T00:00:00-05:00","datePublished":"2020-04-05T00:00:00-05:00","image":"https://davidwalz.github.io/blog/images/scalarization.png","@context":"https://schema.org"}</script>
+{"image":"https://davidwalz.github.io/blog/images/scalarization.png","description":"A comparison of different scalarization methods in multi-objective optimization.","@type":"BlogPosting","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html","headline":"Scalarization methods in multi-objective optimization","dateModified":"2020-04-05T00:00:00-05:00","datePublished":"2020-04-05T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidwalz.github.io/blog/feed.xml" title="Curious Goat" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -38,7 +38,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-05T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"A comparison of different scalarization methods in multi-objective optimization.","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html"},"@type":"BlogPosting","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html","headline":"Scalarization methods in multi-objective optimization","dateModified":"2020-04-05T00:00:00-05:00","datePublished":"2020-04-05T00:00:00-05:00","image":"https://davidwalz.github.io/blog/images/scalarization.png","@context":"https://schema.org"}</script>
+{"image":"https://davidwalz.github.io/blog/images/scalarization.png","description":"A comparison of different scalarization methods in multi-objective optimization.","@type":"BlogPosting","url":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html","headline":"Scalarization methods in multi-objective optimization","dateModified":"2020-04-05T00:00:00-05:00","datePublished":"2020-04-05T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidwalz.github.io/blog/multi-objective%20optimization/2020/04/05/multiobjective-scalarization.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -121,7 +121,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      8 min read
+      9 min read
     
 </span></p>
 
@@ -18399,7 +18399,7 @@ L 837.61901 24.097656
 <a class="anchor" href="#Augmented-Chebyshef-norm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Augmented Chebyshef norm<a class="anchor-link" href="#Augmented-Chebyshef-norm"> </a>
 </h2>
 <p>One limitation of the Chebyshef norm is that it can find weakly efficient points, i.e. objective vectors which are not strictly better in at least one of the objectives.
-This can be avoided by adding a linear term with a tiny slope ε [Steuer 1986]:
+This can be avoided by adding a linear term with a tiny slope ε <a class="citation" href="#Steuer1989">(Steuer, 1989)</a>:
 \begin{align}
 s = \max_m \left( w_m f_m \right) + \epsilon \sum_{m} f_m
 \end{align}</p>
@@ -21229,7 +21229,7 @@ L 837.61901 24.097656
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There's a variant of the augmented Chebyshef norm where slope term is pulled inside the max [Kaliszewski 1987]. 
+<p>There's a variant of the augmented Chebyshef norm where slope term is pulled inside the max <a class="citation" href="#Kaliszewski1987">(Kaliszewski, 1987)</a>. 
 \begin{align}
 s = \max_m \left( w_m f_m + \epsilon \sum_{m} f_m \right)
 \end{align}</p>
@@ -29430,7 +29430,7 @@ L 837.61901 24.097656
 <h2 id="Pascoletti-Serafini">
 <a class="anchor" href="#Pascoletti-Serafini" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pascoletti-Serafini<a class="anchor-link" href="#Pascoletti-Serafini"> </a>
 </h2>
-<p>The Pascoletti-Serafini scalarization [Pascoletti+ 1984] belongs to the boundary intersection methods, where we probe the Pareto front by searching for the intersection point from a feasible reference point $\mathbf{d}$ in direction $\mathbf{d}$:
+<p>The Pascoletti-Serafini scalarization <a class="citation" href="#Pascoletti1984">(Pascoletti &amp; Serafini, 1984)</a> belongs to the boundary intersection methods, where we probe the Pareto front by searching for the intersection point from a feasible reference point $\mathbf{d}$ in direction $\mathbf{d}$:
 \begin{align}
 \max ~ &amp;\lambda \\
 \text{subject to} ~~ &amp;\mathbf{r} + \lambda \mathbf{d} - \mathbf{f}(x) = 0 \\
@@ -31799,7 +31799,8 @@ L 856.198698 24.097656
 <h2 id="Normal-boundary-intersection">
 <a class="anchor" href="#Normal-boundary-intersection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Normal boundary intersection<a class="anchor-link" href="#Normal-boundary-intersection"> </a>
 </h2>
-<p>We first construct the convex hull of individual minima, which is the $M-1$ dimensional hyperplane forming a simplex with the individual optima as corners. Starting from evenly spaced points $\mathbf{r}$ on this plane we then find the intersection with the Pareto front in the negative direction $\mathbf{n}$ normal to the plane:
+<p>For this method we first construct the convex hull of individual minima, which is the $M-1$ dimensional hyperplane with the individual optima as corners. 
+Starting from evenly spaced points $\mathbf{r}$ on this plane we then find the intersection with the Pareto front in the negative direction $\mathbf{n}$ normal to the plane <a class="citation" href="#Das2003">(Das &amp; Dennis, 2003)</a>:
 \begin{align}
 \max ~ &amp;\lambda \\
 \text{subject to} ~~ &amp;\mathbf{r} + \lambda \mathbf{n} - \mathbf{f}(x) = 0 \\
@@ -34456,20 +34457,13 @@ L 818.630729 38.775781
 <h2 id="References">
 <a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
 </h2>
-<ul>
-<li>Steuer 1986, Multiple Criteria Optimization: Theory, Computation and Application<br>
-<a href="https://doi.org/10.1002/oca.4660100109">https://doi.org/10.1002/oca.4660100109</a>
-</li>
-<li>Kaliszewski 1987, A modified weighted tchebycheff metric for multiple objective programming<br>
-<a href="https://doi.org/10.1016/0305-0548(87)90069-4">https://doi.org/10.1016/0305-0548(87)90069-4</a>
-</li>
-<li>Pascoletti+ 1984, Scalarizing vector optimization problems<br>
-<a href="https://doi.org/10.1007/BF00934564">https://doi.org/10.1007/BF00934564</a>
-</li>
-<li>Das+ 1998, Normal-Boundary Intersection: A New Method for Generating the Pareto Surface in Nonlinear Multicriteria Optimization Problems
-<a href="https://doi.org/10.1137/S1052623496307510">https://doi.org/10.1137/S1052623496307510</a>
-</li>
-</ul>
+<p></p>
+<ol class="bibliography">
+<li><span id="Steuer1989">Steuer, R. E. (1989). Multiple criteria optimization; theory, computation, and application. <i>Optimal Control Applications and Methods</i>, <i>10</i>(1), 89–90. https://doi.org/10.1002/oca.4660100109</span></li>
+<li><span id="Kaliszewski1987">Kaliszewski, I. (1987). A modified weighted tchebycheff metric for multiple objective programming. <i>Computers &amp; Operations Research</i>, <i>14</i>(4), 315–323. https://doi.org/https://doi.org/10.1016/0305-0548(87)90069-4</span></li>
+<li><span id="Pascoletti1984">Pascoletti, P., &amp; Serafini, A. (1984). Scalarizing vector optimization problems. <i>Journal of Optimization Theory and Applications</i>, <i>42</i>(4), 499–524. https://doi.org/10.1007/BF00934564</span></li>
+<li><span id="Das2003">Das, I., &amp; Dennis, J. E. (2003). Normal-Boundary Intersection: A New Method for Generating the Pareto Surface in Nonlinear Multicriteria Optimization Problems. <i>SIAM Journal on Optimization</i>, <i>8</i>(3), 631–657. https://doi.org/10.1137/s1052623496307510</span></li>
+</ol>
 
 </div>
 </div>
@@ -34501,7 +34495,7 @@ L 818.630729 38.775781
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"></ul>
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/DavidWalz" title="DavidWalz"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
 </div>
 
   </div>
