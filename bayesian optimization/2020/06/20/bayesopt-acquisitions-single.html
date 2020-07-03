@@ -156,7 +156,6 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Predictive-entropy-search">Predictive entropy search </a></li>
 <li class="toc-entry toc-h2"><a href="#Max-value-entropy-search">Max-value entropy search </a></li>
 <li class="toc-entry toc-h2"><a href="#Knowledge-gradient">Knowledge gradient </a></li>
-<li class="toc-entry toc-h2"><a href="#Mutual-information">Mutual information </a></li>
 <li class="toc-entry toc-h2"><a href="#GLASSES">GLASSES </a></li>
 <li class="toc-entry toc-h2"><a href="#Estimation-strategy">Estimation strategy </a></li>
 <li class="toc-entry toc-h2"><a href="#References">References </a></li>
@@ -186,7 +185,7 @@ $D_t = \{(x_1, y_1) ... (x_t, y_t)\}$ is the data, of which $x^+$ is the locatio
 </p>
 <div class="flash">
     <svg class="octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>This post is work in progress and I intend to update it with further acquisition functions along the way.
+    <strong>Note: </strong>This post is work in progress.
 </div>
 
 </div>
@@ -1807,7 +1806,7 @@ z
 <h2 id="Confidence-bound">
 <a class="anchor" href="#Confidence-bound" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confidence bound<a class="anchor-link" href="#Confidence-bound"> </a>
 </h2>
-<p>With confidence bound (CB, [Auer 2002], [Srinivas+ 2010]) the idea is to be optimistic and simply look for the best value within $k-$sigma off the mean. Thus for a minimization problem, we maximize 
+<p>With confidence bound (CB) <a class="citation" href="#Auer2003">(Auer, 2003; Srinivas et al., 2009)</a> the idea is to be optimistic and simply look for the best value within $k-$sigma off the mean. Thus for a minimization problem, we maximize 
 \begin{align}
 \alpha_\mathrm{CB}(x) = - (\mu(x) - k \sigma(x))
 \end{align} 
@@ -3637,7 +3636,7 @@ z
 <h2 id="Probability-of-improvement">
 <a class="anchor" href="#Probability-of-improvement" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probability of improvement<a class="anchor-link" href="#Probability-of-improvement"> </a>
 </h2>
-<p>Probability of improvement (PI, [Mockus 1974]) selects the point with the highest probability of any improvement with respect to $f^+$ the best value observed so far.
+<p>Probability of improvement (PI), <a class="citation" href="#Mockus1974">(Mockus, 1974)</a> selects the point with the highest probability of any improvement with respect to $f^+$ the best value observed so far.
 \begin{align}
 \alpha_\mathrm{PI}(x) &amp;= \mathbb{P}(I(x) &gt; 0) = \Phi(u) \\
 I(x) &amp;= \max(0, f^+ - f(x)) \\
@@ -5481,7 +5480,7 @@ z
 <h2 id="Expected-improvement">
 <a class="anchor" href="#Expected-improvement" aria-hidden="true"><span class="octicon octicon-link"></span></a>Expected improvement<a class="anchor-link" href="#Expected-improvement"> </a>
 </h2>
-<p>Instead of looking for any kind of improvement ($I(x) &gt; 0$), expected improvement (EI, [Kushner 1964]) takes the magnitude of the improvement $I(x)$ into account and maximize its expectation value:
+<p>Instead of looking for any kind of improvement ($I(x) &gt; 0$), expected improvement (EI), <a class="citation" href="#Kushner1964">(Kushner, 1964)</a>) takes the magnitude of the improvement $I(x)$ into account and maximize its expectation value:
 \begin{align}
 \alpha_\mathrm{EI}(x) = \mathbb{E} [I(x)] = (f^+ - \mu(x)) \Phi(x) + \sigma(x) \phi(x)
 \end{align}
@@ -5534,7 +5533,7 @@ where $\Phi$ and $\phi$ are the standard normal cdf and pdf, respectively.</p>
 <h2 id="Scaled-expected-improvement">
 <a class="anchor" href="#Scaled-expected-improvement" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scaled expected improvement<a class="anchor-link" href="#Scaled-expected-improvement"> </a>
 </h2>
-<p>Scaled expected improvement (SEI, [Noe 2018]) is a recent modification that takes the uncertainty of the improvement quantifier $I(x)$ into account:
+<p>Scaled expected improvement (SEI) <a class="citation" href="#Noe2018">(Noè &amp; Husmeier, 2018)</a> is a recent modification that takes the uncertainty of the improvement quantifier $I(x)$ into account:
 \begin{align}
 \mathbb{V}[I(x)] = σ_f^2(x)((u^2 + 1) \Phi(u) + u \phi(u)) − \mathrm{EI}(x)^2
 \end{align}
@@ -5606,7 +5605,7 @@ Scaling the expectation value of $I(x)$ by its uncertainty, we arrive at
 </h2>
 <p>Uncertainty sampling chooses candidates based on where the model is most uncertain. 
 In the single-objective case, this the point with the greatest predictive variance $\sigma_f^2$.
-For the multi-objective case, [Zachary+ (2019)] propose the sum of the coefficients of variation in all objectives. 
+For the multi-objective case <a class="citation" href="#Rosario2019">(del Rosario et al., 2019)</a> propose the sum of the coefficients of variation in all objectives. 
 \begin{align}
 \alpha(x) = \sum_m \sigma_m / \mu_m
 \end{align}
@@ -5659,8 +5658,8 @@ For Gaussian processes there is no known way of sampling <em>functions</em>.
 Hence, either a certain number of <em>points</em> $x$ sampled from the predictive distribution are considered for the optimiziation, or an approximate <em>function</em> sample is used.</p>
 <p>A limitation for the former is that all previously sampled points contribute to the GP posterior when sampling further points, thus the computational complexity for iterative optimization methods grows with $n^3$, where $n$ is the number of iteratiations / evaluations.
 A simpler but non-optimal alternative is brute-force optimization over a fixed number of simultaneously sampled points.</p>
-<p>For approximate function samples a method called <a href="https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html">spectral sampling</a> is proposed in [Hernandez-Lobato 2014] and worked out in [Bradford 2018].
-The advantage of this method is that the function sample can be evaluated at fixed cost.</p>
+<p>For approximate function samples a method called <a href="https://davidwalz.github.io/blog/gaussian%20process/bayesian%20optimization/2020/05/03/gp-spectral-sampling.html">spectral sampling</a> is proposed in <a class="citation" href="#Hernandez2014">(Hernández-Lobato et al., 2014; Bradford et al., 2018)</a>.
+The advantage of this method is that the function sample can be evaluated at fixed cost and thus is amenable to optimization.</p>
 
 </div>
 </div>
@@ -5748,18 +5747,7 @@ $\alpha(x) = (y^* + |\mathcal{N}(0, \sigma)| - \mu_f(x)) / \sigma_f(x)$</p>
 <h2 id="Knowledge-gradient">
 <a class="anchor" href="#Knowledge-gradient" aria-hidden="true"><span class="octicon octicon-link"></span></a>Knowledge gradient<a class="anchor-link" href="#Knowledge-gradient"> </a>
 </h2>
-<p>[Frazier+ 2009] [Scott+ 2011]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Mutual-information">
-<a class="anchor" href="#Mutual-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mutual information<a class="anchor-link" href="#Mutual-information"> </a>
-</h2>
-<p>[Contal+ 2014]</p>
+<p>(missing reference)</p>
 
 </div>
 </div>
@@ -5770,7 +5758,7 @@ $\alpha(x) = (y^* + |\mathcal{N}(0, \sigma)| - \mu_f(x)) / \sigma_f(x)$</p>
 <h2 id="GLASSES">
 <a class="anchor" href="#GLASSES" aria-hidden="true"><span class="octicon octicon-link"></span></a>GLASSES<a class="anchor-link" href="#GLASSES"> </a>
 </h2>
-<p>[Gonzales+ 2016]</p>
+<p>(missing reference)</p>
 
 </div>
 </div>
@@ -5781,7 +5769,7 @@ $\alpha(x) = (y^* + |\mathcal{N}(0, \sigma)| - \mu_f(x)) / \sigma_f(x)$</p>
 <h2 id="Estimation-strategy">
 <a class="anchor" href="#Estimation-strategy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Estimation strategy<a class="anchor-link" href="#Estimation-strategy"> </a>
 </h2>
-<p>Optimization as Estimation with Gaussian Processes in Bandit Settings [Wang+ 2016]</p>
+<p><a class="citation" href="#Wang2015">(Wang et al., 2015)</a></p>
 
 </div>
 </div>
@@ -5792,53 +5780,18 @@ $\alpha(x) = (y^* + |\mathcal{N}(0, \sigma)| - \mu_f(x)) / \sigma_f(x)$</p>
 <h2 id="References">
 <a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
 </h2>
-<ul>
-<li>Auer (2002) Using confidence bounds for exploitation-exploration trade-offs<br>
-<a href="https://dl.acm.org/doi/10.5555/944919.944941">https://dl.acm.org/doi/10.5555/944919.944941</a>
-</li>
-<li>Srinivas+ (2010) Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design<br>
-<a href="https://arxiv.org/abs/0912.3995">https://arxiv.org/abs/0912.3995</a>
-</li>
-<li>Kushner (1964) A new method of locating the maximum point of an arbitrary multipeak curve in the presence of noise<br>
-<a href="https://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1431594">https://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1431594</a>
-</li>
-<li>Mockus (1974) On Bayesian Methods for Seeking the Extremum<br>
-<a href="https://link.springer.com/content/pdf/10.1007/3-540-07165-2_55.pdf">https://link.springer.com/content/pdf/10.1007/3-540-07165-2_55.pdf</a>
-</li>
-<li>Qin+ (2017) Improving the Expected Improvement Algorithm<br>
-<a href="https://arxiv.org/abs/1705.10033">https://arxiv.org/abs/1705.10033</a>
-</li>
-<li>Noe (2018) On a New Improvement-Based Acquisition Function for Bayesian Optimization<br>
-<a href="https://arxiv.org/abs/1808.06918">https://arxiv.org/abs/1808.06918</a>
-</li>
-<li>Contal+ (2014) Gaussian Process Optimization with Mutual Information<br>
-<a href="http://proceedings.mlr.press/v32/contal14.pdf">http://proceedings.mlr.press/v32/contal14.pdf</a>
-</li>
-<li>Henning+ (2012) Entropy Search for Information-Efficient Global Optimization<br>
-<a href="https://arxiv.org/abs/1112.1217">https://arxiv.org/abs/1112.1217</a>
-</li>
-<li>Hernandez-Lobato+ (2014) Predictive Entropy Search for Efficient Global Optimization of Black-box Functions
-<a href="https://arxiv.org/abs/1406.2541">https://arxiv.org/abs/1406.2541</a>
-</li>
-<li>Wang (2018) Max-value Entropy Search for Efficient Bayesian Optimization<br>
-<a href="https://arxiv.org/abs/1703.01968">https://arxiv.org/abs/1703.01968</a>
-</li>
-<li>Wang+ (2016) Optimization as Estimation with Gaussian Processes in Bandit Settings<br>
-<a href="https://arxiv.org/abs/1510.06423">https://arxiv.org/abs/1510.06423</a>
-</li>
-<li>Gonzales+ (2016) GLASSES: Relieving The Myopia Of Bayesian Optimisation<br>
-<a href="https://arxiv.org/abs/1510.06299">https://arxiv.org/abs/1510.06299</a>
-</li>
-<li>Hutter+ (2010) Sequential Model-Based Optimization for General Algorithm Configuration<br>
-<a href="https://doi.org/10.1007/978-3-642-25566-3_40">https://doi.org/10.1007/978-3-642-25566-3_40</a>
-</li>
-<li>Frazier+ (2009) The knowledge-gradient policy for correlated normal beliefs<br>
-<a href="https://pubsonline.informs.org/doi/abs/10.1287/ijoc.1080.0314">https://pubsonline.informs.org/doi/abs/10.1287/ijoc.1080.0314</a>
-</li>
-<li>Scott+ (2011) The Correlated Knowledge Gradient for Simulation Optimization of Continuous Parameters using Gaussian Process Regression<br>
-<a href="https://epubs.siam.org/doi/10.1137/100801275">https://epubs.siam.org/doi/10.1137/100801275</a>
-</li>
-</ul>
+<p></p>
+<ol class="bibliography">
+<li><span id="Auer2003">Auer, P. (2003). Using Confidence Bounds for Exploitation-Exploration Trade-Offs. <i>J. Mach. Learn. Res.</i>, <i>3</i>(null), 397–422.</span></li>
+<li><span id="Srinivas2009">Srinivas, N., Krause, A., Kakade, S. M., &amp; Seeger, M. (2009). <i>Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design</i>. https://doi.org/10.1109/TIT.2011.2182033</span></li>
+<li><span id="Mockus1974">Mockus, J. (1974). <i>On Bayesian Methods for Seeking the Extremum</i>. https://link.springer.com/content/pdf/10.1007/3-540-07165-2_55.pdf</span></li>
+<li><span id="Kushner1964">Kushner, H. J. (1964). A New Method of Locating the Maximum Point of an Arbitrary Multipeak Curve in the Presence of Noise. <i>J. Basic Eng.</i>, <i>86</i>, 97–106. https://doi.org/10.1115/1.3653121</span></li>
+<li><span id="Noe2018">Noè, U., &amp; Husmeier, D. (2018). <i>On a New Improvement-Based Acquisition Function for Bayesian Optimization</i>. http://arxiv.org/abs/1808.06918</span></li>
+<li><span id="Rosario2019">del Rosario, Z., Rupp, M., Kim, Y., Antono, E., &amp; Ling, J. (2019). <i>Assessing the Frontier: Active Learning, Model Accuracy, and Multi-objective Materials Discovery and Optimization</i>. http://arxiv.org/abs/1911.03224</span></li>
+<li><span id="Hernandez2014">Hernández-Lobato, J. M., Hoffman, M. W., &amp; Ghahramani, Z. (2014). <i>Predictive Entropy Search for Efficient Global Optimization of Black-box Functions</i>. http://arxiv.org/abs/1406.2541</span></li>
+<li><span id="Bradford2018">Bradford, E., Schweidtmann, A. M., &amp; Lapkin, A. (2018). Efficient multiobjective optimization employing Gaussian processes, spectral sampling and a genetic algorithm. <i>Journal of Global Optimization</i>, <i>71</i>(2), 407–438. https://doi.org/10.1007/s10898-018-0609-2</span></li>
+<li><span id="Wang2015">Wang, Z., Zhou, B., &amp; Jegelka, S. (2015). <i>Optimization as Estimation with Gaussian Processes in Bandit Settings</i>. http://arxiv.org/abs/1510.06423</span></li>
+</ol>
 
 </div>
 </div>

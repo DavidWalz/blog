@@ -1281,7 +1281,7 @@ z
 <h2 id="Hypervolume-indicator">
 <a class="anchor" href="#Hypervolume-indicator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hypervolume indicator<a class="anchor-link" href="#Hypervolume-indicator"> </a>
 </h2>
-<p>The hypervolume indicator [Zitzler 1999] measures the volume in the objective space that is dominated by a set, bounded by a reference point.
+<p>The hypervolume indicator <a class="citation" href="#Zitzler1999">(Zitzler &amp; Thiele, 1999)</a> measures the volume in the objective space that is dominated by a set, bounded by a reference point.
 Larger values indicate better convergence, spread and distribution.<br>
 The hypervolume is sensitive to the choice of the reference point. For more distant reference points, the difference in dominated hypervolume decreases.
 In practice we can select the vector of the worst objective values from our set (the nadir).</p>
@@ -3529,7 +3529,7 @@ z
 <h2 id="Crowding-distance">
 <a class="anchor" href="#Crowding-distance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Crowding distance<a class="anchor-link" href="#Crowding-distance"> </a>
 </h2>
-<p>The crowding distance [Deb 2000] calculates for each point in a non-dominated set the average side length of the cuboid formed by the neighboring points. This provides a measure of the local density at each point. Points with small crowding distance can be pruned out without losing too much information. In a uniformly populated front, each point will have a similar crowding distance.<br>
+<p>The crowding distance <a class="citation" href="#Deb2000">(Deb et al., 2000)</a> calculates for each point in a non-dominated set the average side length of the cuboid formed by the neighboring points. This provides a measure of the local density at each point. Points with small crowding distance can be pruned out without losing too much information. In a uniformly populated front, each point will have a similar crowding distance.<br>
 The crowding distance is thus similar to the exclusive hypervolume contribution, only that here the side length and not the volume is considered.</p>
 
 </div>
@@ -3654,7 +3654,7 @@ The crowding distance is thus similar to the exclusive hypervolume contribution,
 <a class="anchor" href="#Epsilon-indicator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Epsilon-indicator<a class="anchor-link" href="#Epsilon-indicator"> </a>
 </h2>
 <p>An objective vector $a$ is said to $\epsilon$-dominate $b$ if $a_i &lt; \epsilon \cdot b_i ~ \forall i=1 \ldots m$ where $\epsilon &lt; 1$ is a scalar.<br>
-The binary $\epsilon$-indicator $I_\epsilon(A, B)$ is defined as the smallest $\epsilon$ value for which any vector in $B$ is $\epsilon$-dominated by a vector in $A$ [Zitzler 2003].
+The binary $\epsilon$-indicator $I_\epsilon(A, B)$ is defined as the smallest $\epsilon$ value for which any vector in $B$ is $\epsilon$-dominated by a vector in $A$ <a class="citation" href="#Zitzler2003">(Zitzler et al., 2003)</a>.
 \begin{align}
 I_\epsilon(A, B) = \max_\limits{b \in B} \min_\limits{a \in A} \max_\limits{1 \leq i \leq m} \frac{a_i}{b_i}
 \end{align}
@@ -3792,7 +3792,7 @@ Set 2: I_ε1=0.220
 <h2 id="Generational-distance">
 <a class="anchor" href="#Generational-distance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generational distance<a class="anchor-link" href="#Generational-distance"> </a>
 </h2>
-<p>The generational distance (GD, Veldhuizen 2000) is defined as the average distance of points in the approximate front $A$ to a reference front $R$, which is either the actual Pareto front or a very good approximation to it.</p>
+<p>The generational distance (GD) <a class="citation" href="#Veldhuizen2000">(Veldhuizen &amp; Lamont, 2000)</a> is defined as the average distance of points in the approximate front $A$ to a reference front $R$, which is either the actual Pareto front or a very good approximation to it.</p>
 \begin{align}
 \mathrm{GD}(A, R) = \frac{1}{N_A} \left(\sum\limits_{a \in A} d(a, R)^p \right)^{1/p}
 \end{align}<p>where $d(a, R)$ is the euclidean distance of $a$ to the reference front.
@@ -3882,7 +3882,7 @@ GD(A,R2) = 0.119
 <h2 id="Inverted-generational-distance">
 <a class="anchor" href="#Inverted-generational-distance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inverted generational distance<a class="anchor-link" href="#Inverted-generational-distance"> </a>
 </h2>
-<p>The inverted generationl distance (IGD, [Coello 2004]) simply reverses the role of approximate front and reference front, i.e. $\mathrm{IGD}(A, R) = \mathrm{GD}(R, A)$. Thus it calculates the average distance between each point in the reference front $R$ to the closest point in the approximated front $A$.</p>
+<p>The inverted generationl distance (IGD) <a class="citation" href="#Coello2004">(Coello &amp; Reyes, 2004)</a> simply reverses the role of approximate front and reference front, i.e. $\mathrm{IGD}(A, R) = \mathrm{GD}(R, A)$. Thus it calculates the average distance between each point in the reference front $R$ to the closest point in the approximated front $A$.</p>
 <p>IGD simultaneously measures convergence, spread and distribution.<br>
 In the example, set 2 achieves a better IGD-value due to its better spread and distribution.</p>
 
@@ -3934,7 +3934,7 @@ IGD(A2,R) = 0.157
 <a class="anchor" href="#Modified-(inverted)-generational-distance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modified (inverted) generational distance<a class="anchor-link" href="#Modified-(inverted)-generational-distance"> </a>
 </h2>
 <p>The GD / IGD metrics cannot differentiate the quality of points in the approximate front when they are non-dominated by the reference front.
-To fix this, a modified distance measure can be used [Ishibuchi 2015]
+To fix this, a modified distance measure can be used <a class="citation" href="#Ishibuchi2015">(Ishibuchi et al., 2015)</a>
 \begin{align}
 d^+(a, R) = \min_{r \in R} \sqrt{ \sum_{i=1}^m \max(a_i - r_i, 0)^2 }
 \end{align}
@@ -4128,26 +4128,15 @@ IGD+(A3,R) = 0.086
 <h2 id="References">
 <a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
 </h2>
-<ul>
-<li>Zitzler+ (1999) Multiobjective evolutionary algorithms: A comparative casestudy and the strength Pareto evolutionary algorithm<br>
-<a href="https://doi.org/10.1109/4235.797969">https://doi.org/10.1109/4235.797969</a>
-</li>
-<li>Kalyanmoy Deb (2000), A fast elitist non-dominated sorting genetic algorithm for multi-objective optimization: NSGA-II<br>
-<a href="https://link.springer.com/chapter/10.1007/3-540-45356-3_83">https://link.springer.com/chapter/10.1007/3-540-45356-3_83</a>
-</li>
-<li>Zitzler+ (2003) Performance assessment of multiobjective optimizers: an analysis and review<br>
-<a href="https://doi.org/10.1109/TEVC.2003.810758">https://doi.org/10.1109/TEVC.2003.810758</a>
-</li>
-<li>Veldhuizen+ (2000) Multiobjective Evolutionary Algorithms: Analyzing the State-of-the-Art<br>
-<a href="http://dx.doi.org/10.1162/106365600568158">http://dx.doi.org/10.1162/106365600568158</a>
-</li>
-<li>Coello+ (2004) A study of the parallelization of a coevolutionary multi-objective evolutionary algorithm<br>
-<a href="https://doi.org/10.1007/978-3-540-24694-7_71">https://doi.org/10.1007/978-3-540-24694-7_71</a>
-</li>
-<li>Ishibuchi+ (2015) Modified Distance Calculation in Generational Distance and Inverted Generational Distance<br>
-<a href="https://doi.org/10.1007/978-3-319-15892-1_8">https://doi.org/10.1007/978-3-319-15892-1_8</a>
-</li>
-</ul>
+<p></p>
+<ol class="bibliography">
+<li><span id="Zitzler1999">Zitzler, E., &amp; Thiele, L. (1999). Multiobjective evolutionary algorithms: a comparative case study and the strength Pareto approach. <i>IEEE Transactions on Evolutionary Computation</i>, <i>3</i>(4), 257–271.</span></li>
+<li><span id="Deb2000">Deb, K., Agrawal, S., Pratap, A., &amp; Meyarivan, T. (2000). A Fast Elitist Non-dominated Sorting Genetic Algorithm for Multi-objective Optimization: NSGA-II. <i>Parallel Problem Solving from Nature PPSN VI</i>, 849–858.</span></li>
+<li><span id="Zitzler2003">Zitzler, E., Thiele, L., Laumanns, M., Fonseca, C. M., &amp; da Fonseca, V. G. (2003). Performance assessment of multiobjective optimizers: an analysis and review. <i>IEEE Transactions on Evolutionary Computation</i>, <i>7</i>(2), 117–132.</span></li>
+<li><span id="Veldhuizen2000">Veldhuizen, D. A. V., &amp; Lamont, G. B. (2000). Multiobjective Evolutionary Algorithms: Analyzing the State-of-the-Art. <i>Evolutionary Computation</i>, <i>8</i>(2), 125–147. https://doi.org/10.1162/106365600568158</span></li>
+<li><span id="Coello2004">Coello, C. A. M. C., &amp; Reyes, S. (2004). A Study of the Parallelization of a Coevolutionary Multi-objective Evolutionary Algorithm. <i>MICAI 2004: Advances in Artificial Intelligence</i>, 688–697.</span></li>
+<li><span id="Ishibuchi2015">Ishibuchi, H., Masuda, H., Tanigaki, Y., &amp; Nojima, Y. (2015). Modified Distance Calculation in Generational Distance and Inverted Generational Distance. <i>Evolutionary Multi-Criterion Optimization</i>, 110–125.</span></li>
+</ol>
 
 </div>
 </div>
