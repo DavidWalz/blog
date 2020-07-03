@@ -245,6 +245,15 @@
    volume = {82},
    year = {2015},
 }
+@ARTICLE{Emmerich2006,
+   author={M. T. M. {Emmerich} and K. C. {Giannakoglou} and B. {Naujoks}},
+   journal={IEEE Transactions on Evolutionary Computation}, 
+   title={Single- and multiobjective evolutionary optimization assisted by Gaussian random field metamodels}, 
+   year={2006},
+   volume={10},
+   number={4},
+   pages={421-439},
+}
 @inproceedings{Emmerich2011,
    abstract = {The expected improvement (EI) is a well established criterion in Bayesian global optimization (BGO) and metamodel-assisted evolutionary computation, both applied in optimization with costly function evaluations. Recently, it has been adopted in different ways to multiobjective optimization. A promising approach to formulate the expected improvement in this context, is to base it on the hypervolume indicator. Given the Bayesian model of the optimization landscape, the EI in hypervolume computes the expected gain in attained hypervolume for a given input point. Although a formulation of this expected improvement is relatively straightforward, its computation and mathematical properties are still to be investigated. This paper will outline and derive an algorithm for the exact computation of the proposed hypervolume-based EI. Moreover, this paper establishes monotonicity properties of the expected improvement. In particular the effect of the predictive distribution's variance on the hypervolume-based EI and elementary properties of the EI landscape are studied. The monotonicity properties will reveal regions where Pareto front approximations can be improved as well as underexplored regions that are favored by the hypervolume-based expected improvement. A first numerical example is included that illustrates the behavior of the hypervolume-based EI in the multiobjective BGO framework. © 2011 IEEE.},
    author = {Michael T.M. Emmerich and André H. Deutz and Jan Willem Klinkenberg},
@@ -660,7 +669,7 @@
    year = {2014},
 }
 @article{Knowles2006,
-   abstract = { This paper concerns multiobjective optimization in scenarios where each solution evaluation is financially and/or temporally expensive. We make use of nine relatively low-dimensional, nonpathological, real-valued functions, such as arise in many applications, and assess the performance of two algorithms after just 100 and 250 (or 260) function evaluations. The results show that NSGA-II, a popular multiobjective evolutionary algorithm, performs well compared with random search, even within the restricted number of evaluations used. A significantly better performance (particularly, in the worst case) is, however, achieved on our test set by an algorithm proposed herein-ParEGO-which is an extension of the single-objective efficient global optimization (EGO) algorithm of Jones et al. ParEGO uses a design-of-experiments inspired initialization procedure and learns a Gaussian processes model of the search landscape, which is updated after every function evaluation. Overall, ParEGO exhibits a promising performance for multiobjective optimization problems where evaluations are expensive or otherwise restricted in number.},
+   abstract = {This paper concerns multiobjective optimization in scenarios where each solution evaluation is financially and/or temporally expensive. We make use of nine relatively low-dimensional, nonpathological, real-valued functions, such as arise in many applications, and assess the performance of two algorithms after just 100 and 250 (or 260) function evaluations. The results show that NSGA-II, a popular multiobjective evolutionary algorithm, performs well compared with random search, even within the restricted number of evaluations used. A significantly better performance (particularly, in the worst case) is, however, achieved on our test set by an algorithm proposed herein-ParEGO-which is an extension of the single-objective efficient global optimization (EGO) algorithm of Jones et al. ParEGO uses a design-of-experiments inspired initialization procedure and learns a Gaussian processes model of the search landscape, which is updated after every function evaluation. Overall, ParEGO exhibits a promising performance for multiobjective optimization problems where evaluations are expensive or otherwise restricted in number.},
    author = {Joshua Knowles},
    doi = {10.1109/TEVC.2005.851274},
    issn = {1089778X},
@@ -940,6 +949,14 @@
    url = {http://arxiv.org/abs/1910.06403},
    year = {2019},
 }
+@misc{Daulton2020,
+   title={Differentiable Expected Hypervolume Improvement for Parallel Multi-Objective Bayesian Optimization},
+   author={Samuel Daulton and Maximilian Balandat and Eytan Bakshy},
+   year={2020},
+   eprint={2006.05078},
+   archivePrefix={arXiv},
+   primaryClass={stat.ML}
+}
 @article{Paria2018,
    abstract = {Many real world applications can be framed as multi-objective optimization problems, where we wish to simultaneously optimize for multiple criteria. Bayesian optimization techniques for the multi-objective setting are pertinent when the evaluation of the functions in question are expensive. Traditional methods for multi-objective optimization, both Bayesian and otherwise, are aimed at recovering the Pareto front of these objectives. However, in certain cases a practitioner might desire to identify Pareto optimal points only in a subset of the Pareto front due to external considerations. In this work, we propose a strategy based on random scalarizations of the objectives that addresses this problem. Our approach is able to flexibly sample from desired regions of the Pareto front and, computationally, is considerably cheaper than most approaches for MOO. We also study a notion of regret in the multi-objective setting and show that our strategy achieves sublinear regret. We experiment with both synthetic and real-life problems, and demonstrate superior performance of our proposed algorithm in terms of the flexibility and regret.},
    author = {Biswajit Paria and Kirthevasan Kandasamy and Barnabás Póczos},
@@ -1207,15 +1224,6 @@
    volume = {10},
    year = {2020},
 }
-@article{Srinivas2009,
-   abstract = {Many applications require optimizing an unknown, noisy function that is expensive to evaluate. We formalize this task as a multi-armed bandit problem, where the payoff function is either sampled from a Gaussian process (GP) or has low RKHS norm. We resolve the important open problem of deriving regret bounds for this setting, which imply novel convergence rates for GP optimization. We analyze GP-UCB, an intuitive upper-confidence based algorithm, and bound its cumulative regret in terms of maximal information gain, establishing a novel connection between GP optimization and experimental design. Moreover, by bounding the latter in terms of operator spectra, we obtain explicit sublinear regret bounds for many commonly used covariance functions. In some important cases, our bounds have surprisingly weak dependence on the dimensionality. In our experiments on real sensor data, GP-UCB compares favorably with other heuristical GP optimization approaches.},
-   author = {Niranjan Srinivas and Andreas Krause and Sham M. Kakade and Matthias Seeger},
-   doi = {10.1109/TIT.2011.2182033},
-   month = {12},
-   title = {Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design},
-   url = {http://arxiv.org/abs/0912.3995 http://dx.doi.org/10.1109/TIT.2011.2182033},
-   year = {2009},
-}
 @article{Qin2017,
    abstract = {The expected improvement (EI) algorithm is a popular strategy for information collection in optimization under uncertainty. The algorithm is widely known to be too greedy, but nevertheless enjoys wide use due to its simplicity and ability to handle uncertainty and noise in a coherent decision theoretic framework. To provide rigorous insight into EI, we study its properties in a simple setting of Bayesian optimization where the domain consists of a finite grid of points. This is the so-called best-arm identification problem, where the goal is to allocate measurement effort wisely to confidently identify the best arm using a small number of measurements. In this framework, one can show formally that EI is far from optimal. To overcome this shortcoming, we introduce a simple modification of the expected improvement algorithm. Surprisingly, this simple change results in an algorithm that is asymptotically optimal for Gaussian best-arm identification problems, and provably outperforms standard EI by an order of magnitude.},
    author = {Chao Qin and Diego Klabjan and Daniel Russo},
@@ -1471,4 +1479,22 @@
    author = "Mengjun Ming and Rui Wang and Yabing Zha and Tao Zhang",
    keywords = "Multi-objective evolutionary algorithms, Scalarizing method, Pareto adaptive PBI method, Hybrid renewable energy system",
    abstract = "Penalty-based boundary intersection (PBI) method is a frequently used scalarizing method in decomposition based multi-objective evolutionary algorithms (MOEAs). It works well when a proper penalty value is provided, however, the determination of a suitable penalty value depends on the problem itself, more precisely, the Pareto optimal front (PF) shape. As the penalty value increases, the PBI method becomes less effective in terms of convergence, but is more capable of handling various PF shapes. In this study, a simple yet effective method called Pareto adaptive PBI (PaP) is proposed by which a suitable penalty value can be adaptively identified, which therefore can maintain fast convergence speed, meanwhile, leading to a good approximation of the PF. The PaP strategy integrated into the state-of-the-art decomposition algorithm, MOEA/D, denoted as MOEA/D-PaP, is examined on a set of multi-objective benchmarks with different PF shapes. Experimental results show that the PaP strategy is more effective than the weighted sum, the weighted Tchebycheff and the PBI method with (representative) fixed penalty values in general. In addition, the MOEA/D-PaP is examined on a real-world problem – multi-objective optimization of a hybrid renewable energy system whose PF is unknown. The outcome of the experiment further confirms its feasibility and superiority."
+}
+@ARTICLE{Zitzler1999,
+   author={E. {Zitzler} and L. {Thiele}},
+   journal={IEEE Transactions on Evolutionary Computation}, 
+   title={Multiobjective evolutionary algorithms: a comparative case study and the strength Pareto approach}, 
+   year={1999},
+   volume={3},
+   number={4},
+   pages={257-271},
+}
+@ARTICLE{Zitzler2003,
+   author={E. {Zitzler} and L. {Thiele} and M. {Laumanns} and C. M. {Fonseca} and V. G. {da Fonseca}},
+   journal={IEEE Transactions on Evolutionary Computation}, 
+   title={Performance assessment of multiobjective optimizers: an analysis and review}, 
+   year={2003},
+   volume={7},
+   number={2},
+   pages={117-132},
 }
